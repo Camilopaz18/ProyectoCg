@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Camara : MonoBehaviour
 {
-    public Transform John;
+    public Transform heroe2;
 
     void Update()
     {
-        if (John != null)
+        if (heroe2 != null)
         {
             Vector3 position = transform.position;
-            position.x = John.position.x;
+            position.x = heroe2.position.x;
             transform.position = position;
         }
     }

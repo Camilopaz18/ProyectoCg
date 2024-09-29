@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 922298517}
   - component: {fileID: 922298519}
   m_Layer: 0
-  m_Name: heroe 2
+  m_Name: heroe2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -908,7 +908,7 @@ Transform:
   m_GameObject: {fileID: 922298513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.8, y: -0.23, z: 0}
+  m_LocalPosition: {x: -5.96, y: -1.87, z: 0}
   m_LocalScale: {x: 5.19, y: 5.19, z: 5.19}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -995,12 +995,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 922298513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aceae4630e74254f8ff7e1ce2c12c7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6caae654888578441a01763c9fddb748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 0}
   Speed: 5
-  JumpForce: 1
+  JumpForce: 0
 --- !u!1 &1016399450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1012,7 @@ GameObject:
   - component: {fileID: 1016399453}
   - component: {fileID: 1016399452}
   - component: {fileID: 1016399451}
+  - component: {fileID: 1016399454}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1093,6 +1094,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016399454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016399450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9223855995243054ba3bdff611bb1249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroe2: {fileID: 922298516}
 --- !u!1 &1250649315
 GameObject:
   m_ObjectHideFlags: 0

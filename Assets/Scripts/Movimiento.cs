@@ -1,101 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental;
 using UnityEngine;
+
 
 public class Movimiento : MonoBehaviour
 {
+    public GameObject BulletPrefab;
     public float Speed;
     public float JumpForce;
-    public GameObject BulletPrefab;
 
-    private Rigidbody2D Rigidbody2D;
-    private Animator Animator;
+    private Rigidbody2D rigidBody2d;
+    private Animator animator;
     private float Horizontal;
     private bool Grounded;
+    private Vector3 originalScale;
     private float LastShoot;
-    private int Health = 5;
+    private int Health = 50;
 
-    private void Start()
+
+
+    void Start()
     {
-        Rigidbody2D = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
+        rigidBody2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        originalScale = transform.localScale; // Asigna la escala original
+
     }
 
-    private void Update()
+    void Update()
     {
-        // Movimiento
         Horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Horizontal < 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        else if (Horizontal > 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        if (Horizontal < 0.0f)
+            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
+        else if (Horizontal > 0.0f)
+            transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
 
-        Animator.SetBool("Running", Horizontal != 0.0f);
+        animator.SetBool("running", Horizontal != 0.0f);
 
-        // Detectar Suelo
-
+        Debug.DrawRay(transform.position, Vector3.down * 0.1f, Color.red);
         if (Physics2D.Raycast(transform.position, Vector3.down, 0.1f))
         {
             Grounded = true;
         }
         else Grounded = false;
 
-        // Salto
         if (Input.GetKeyDown(KeyCode.W) && Grounded)
         {
             Jump();
-            Animator.SetBool("Grounded", Grounded);
 
-            if (Grounded && Animator.GetBool("Grounded"))
-            {
-                Animator.SetBool("Grounded", true);
-            }
         }
-   
 
-        // Desactivar la animación de salto cuando el personaje toca el suelo
-        
 
-        // Disparar
-        if (Input.GetKey(KeyCode.Space)&& Time.time > LastShoot + 0.25f)
-        {
-            Shoot();
-            LastShoot = Time.time;
-        }
+    }
+
+
+
+    private void Jump()
+    {
+        rigidBody2d.AddForce(Vector2.up * JumpForce);
     }
 
     private void FixedUpdate()
     {
-        Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y);
-
-
-    }
-
-    private void Jump()
-    {
-        Rigidbody2D.AddForce(Vector2.up * JumpForce);
-        Animator.SetTrigger("Jump");
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-         if (collision.gameObject.tag == "Tierra")
-            Grounded = false;
-    }
-    private void Shoot()
-    {
-        Vector3 direction;
-        if (transform.localScale.x == 1.0f) direction = Vector3.right;
-        else direction = Vector3.left;
-
-        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
-        bullet.GetComponent<Bullet>().SetDirection(direction);
+        rigidBody2d.velocity = new Vector2(Horizontal * Speed, rigidBody2d.velocity.y);
     }
 
     public void Hit()
     {
-        Health -= 1;
+        Health = Health - 1;
         if (Health == 0) Destroy(gameObject);
+
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("puas"))
+        {
+            Debug.Log("Muerto");
+            Destroy(obj: gameObject);
+        }
+    }
 }
+
