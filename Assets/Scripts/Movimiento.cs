@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
-    public GameObject BulletPrefab;
-    public float Speed;
+
+ public float Speed;
     public float JumpForce;
+    public GameObject[] personajes; // Arreglo para almacenar los personajes
+    public float distanciaSeguimiento = 2f; // Distancia a la que los personajes deben seguir al líder
 
     private Rigidbody2D rigidBody2d;
     private Animator animator;
     private float Horizontal;
     private bool Grounded;
     private Vector3 originalScale;
-    private float LastShoot;
     private int Health = 50;
 
 
@@ -24,13 +25,13 @@ public class Movimiento : MonoBehaviour
         rigidBody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         originalScale = transform.localScale; // Asigna la escala original
-
     }
 
     void Update()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
 
+        // Mismo código para el control de la dirección y animación
         if (Horizontal < 0.0f)
             transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
         else if (Horizontal > 0.0f)
@@ -38,6 +39,7 @@ public class Movimiento : MonoBehaviour
 
         animator.SetBool("running", Horizontal != 0.0f);
 
+        // Detección del suelo
         Debug.DrawRay(transform.position, Vector3.down * 0.1f, Color.red);
         if (Physics2D.Raycast(transform.position, Vector3.down, 0.1f))
         {
@@ -45,6 +47,8 @@ public class Movimiento : MonoBehaviour
         }
         else Grounded = false;
 
+
+        // Salto
         if (Input.GetKeyDown(KeyCode.W) && Grounded)
         {
             Jump();
@@ -52,6 +56,21 @@ public class Movimiento : MonoBehaviour
         }
 
 
+        // Seguimiento de personajes
+        if(personajes != null && personajes.Length >= 3)
+{
+            for (int i = 1; i < personajes.Length; i++)
+            {
+                GameObject personajeActual = personajes[i];
+                GameObject personajeAnterior = personajes[i - 1];
+
+                // Calcular la dirección hacia el personaje anterior
+                Vector3 direccion = (personajeAnterior.transform.position - personajeActual.transform.position).normalized;
+
+                // Mover el personaje actual una pequeña distancia en la dirección calculada
+                personajeActual.transform.position += direccion * Speed * Time.deltaTime;
+            }
+        }
     }
 
 
@@ -63,7 +82,8 @@ public class Movimiento : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidBody2d.velocity = new Vector2(Horizontal * Speed, rigidBody2d.velocity.y);
+        rigidBody2d.velocity = new Vector2(Horizontal
+ * Speed, rigidBody2d.velocity.y);
     }
 
     public void Hit()
@@ -73,9 +93,11 @@ public class Movimiento : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D
+ collision)
     {
         if (collision.CompareTag("puas"))
+
         {
             Debug.Log("Muerto");
             Destroy(obj: gameObject);
