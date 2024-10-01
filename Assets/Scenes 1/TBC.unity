@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  idName: Skeleton
+  idName: Enemy 1
   statusPanel: {fileID: 1581273397}
   combatManager: {fileID: 794994002}
   statusMods: []
@@ -2103,7 +2103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  idName: Skeleton red
+  idName: Enemy 2
   statusPanel: {fileID: 492604954}
   combatManager: {fileID: 794994002}
   statusMods: []

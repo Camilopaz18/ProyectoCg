@@ -5,7 +5,7 @@ public class EnemyFighter : Fighter
 {
     void Awake()
     {
-        this.stats = new Stats(20, 50, 40, 30, 60, 15);
+        this.stats = EnemyStats.GetStatsForEnemy(this.idName);
     }
 
     public override void InitTurn()

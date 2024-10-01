@@ -16,6 +16,8 @@ public abstract class Skill : MonoBehaviour
 
     protected Queue<string> messages;
 
+    protected int damage;
+
     public bool needsManualTargeting
     {
         get
@@ -71,6 +73,10 @@ public abstract class Skill : MonoBehaviour
             return this.messages.Dequeue();
         else
             return null;
+    }
+    public void SetDamage(int _damage)
+    {
+        this.damage = _damage;
     }
 
     protected abstract void OnRun(Fighter receiver);
