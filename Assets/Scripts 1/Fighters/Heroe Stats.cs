@@ -7,10 +7,10 @@ public static class HeroeStats
  
         private static Dictionary<string, Stats> predefinedStats = new Dictionary<string, Stats>
     {
-        { "Heroe 1", new Stats(5, 100f, 30f, 20f, 25f, 15f) },
-        { "Heroe 2", new Stats(6, 120f, 35f, 22f, 30f, 10f) },
-        { "Heroe 3", new Stats(4, 90f, 25f, 18f, 20f, 20f) },
-        { "Heroe 4", new Stats(7, 140f, 40f, 25f, 35f, 12f) }
+        { "Heroe 1", new Stats(20, 100, 30, 20, 25, 15) },
+        { "Heroe 2", new Stats(25, 120, 35, 22, 30, 10) },
+        { "Heroe 3", new Stats(24, 90, 25, 18, 20, 20) },
+        { "Heroe 4", new Stats(23, 140, 40, 25, 35, 12) }
     };
 
         public static Stats GetStatsForHero(string heroName)
