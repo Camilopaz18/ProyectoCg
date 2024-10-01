@@ -96,22 +96,7 @@ public class CombatManager : MonoBehaviour
     }
      
     //
-    private bool IsAttackSuccessful()
-    {
-        // Tirar un dado de 10 (número aleatorio entre 0 y 9)
-        int roll = UnityEngine.Random.Range(0, 10); // Genera un número entre 0 y 9
-
-        // Si el número es 1, 2 o 3, la tirada es pifia (fallo)
-        if (roll >= 1 && roll <= 3)
-        {
-            LogPanel.Write($"Tirada: {roll}. Pifia! El ataque falló.");
-            return false;
-        }
-
-        // Si el número es entre 4 y 9, la tirada es exitosa
-        LogPanel.Write($"Tirada: {roll}. ¡Éxito en el ataque!");
-        return true;
-    }
+ 
     //
     IEnumerator CombatLoop()
     {
@@ -119,27 +104,19 @@ public class CombatManager : MonoBehaviour
         {
             switch (this.combatStatus)
             {
+                case CombatStatus.WAITING_FOR_FIGHTER:
+                    yield return null;
+                    break;
+
                 case CombatStatus.FIGHTER_ACTION:
-                    // Aquí ya tienes la variable 'currentFighter' en otro lugar del método
-                    Fighter activeFighter = this.fighters[this.fighterIndex];  // Cambié el nombre a 'activeFighter'
-                    LogPanel.Write($"{activeFighter.idName} intenta usar {currentFighterSkill.skillName}.");
+                    LogPanel.Write($"{this.fighters[this.fighterIndex].idName} uses {currentFighterSkill.skillName}.");
 
                     yield return null;
 
-                    // Realizar tirada de éxito
-                    if (!IsAttackSuccessful())
-                    {
-                        // Pifia: No se realiza la acción
-                        LogPanel.Write($"{activeFighter.idName} falló el ataque.");
-                        this.combatStatus = CombatStatus.CHECK_FOR_VICTORY;
-                        yield return null;
-                        break;
-                    }
+                    // Executing fighter skill
+                    currentFighterSkill.Run();
 
-                    // Si la tirada fue exitosa, continúa con el cálculo del daño
-                    currentFighterSkill.Run();  // Ejecutar la habilidad normalmente
-
-                    // Espera la animación de la habilidad
+                    // Wait for fighter skill animation
                     yield return new WaitForSeconds(currentFighterSkill.animationDuration);
                     this.combatStatus = CombatStatus.CHECK_ACTION_MESSAGES;
 

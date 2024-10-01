@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatRolls : MonoBehaviour
+public class AttackRoll
 {
     // Start is called before the first frame update
     public static bool IsAttackSuccessful()

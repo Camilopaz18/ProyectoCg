@@ -50,8 +50,20 @@ public abstract class Skill : MonoBehaviour
     {
         foreach (var receiver in this.receivers)
         {
+            // Realizar la tirada de ataque
+            int roll = Random.Range(0, 10); // Genera un número entre 0 y 9
+            LogPanel.Write($"{emitter.idName} realiza una tirada de ataque: {roll}");
+
+            if (roll <= 3) // Pifia
+            {
+                LogPanel.Write($"{emitter.idName} ha fallado su ataque (pifia) con un número de {roll} y no realiza ninguna acción.");
+                // Aquí puedes decidir si quieres hacer algo más en caso de pifia
+                continue; // No ejecuta la habilidad si hay pifia
+            }
+
+            LogPanel.Write($"{emitter.idName} ha tenido éxito en su ataque con un número de {roll}.");
             this.Animate(receiver);
-            this.OnRun(receiver);
+            this.OnRun(receiver); // Solo se ejecuta si hay éxito
         }
 
         this.receivers.Clear();

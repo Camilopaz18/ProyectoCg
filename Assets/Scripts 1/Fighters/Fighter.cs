@@ -124,4 +124,6 @@ public abstract class Fighter : MonoBehaviour
     }
 
     public abstract void InitTurn();
+
+
 }
