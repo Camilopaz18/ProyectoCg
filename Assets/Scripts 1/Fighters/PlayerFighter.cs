@@ -8,18 +8,11 @@ public class PlayerFighter : Fighter
     public Animator animator;
     private Skill skillToBeExecuted;
 
-    private readonly Stats[] heroStats = new Stats[4]; // Array to store hero stats
-
     void Awake()
     {
-        // Initialize hero stats (assuming you have defined the Stats class)
-        heroStats[0] = new Stats(21, 60, 50, 45, 20, 20); // Hero 1 stats
-        heroStats[1] = new Stats(25, 50, 40, 50, 15, 25); // Hero 2 stats (example)
-        heroStats[2] = new Stats(18, 70, 60, 30, 25, 15); // Hero 3 stats (example)
-        heroStats[3] = new Stats(28, 45, 35, 55, 20, 30); // Hero 4 stats (example)
-
-        this.stats = heroStats[0]; // Assign default stats to current player (can be changed)
+        this.stats = HeroeStats.GetStatsForHero(this.idName);
     }
+
     public override void InitTurn()
     {
         this.skillPanel.ShowForPlayer(this);

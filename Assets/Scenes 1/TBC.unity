@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  idName: Heroe  2
+  idName: Heroe 2
   statusPanel: {fileID: 865220902}
   combatManager: {fileID: 794994002}
   statusMods: []
@@ -4282,7 +4282,7 @@ Animator:
   m_GameObject: {fileID: 1658929475}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 648ee90f324b98e46bbd6710682d0ba0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 445640f073d51814fb1414b4e3404810, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
