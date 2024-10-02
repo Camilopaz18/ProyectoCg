@@ -96,12 +96,7 @@ public class Movimiento : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D
  collision)
     {
-        if (collision.CompareTag("puas"))
-
-        {
-            Debug.Log("Muerto");
-            Destroy(obj: gameObject);
-        }
+        
     }
 }
 

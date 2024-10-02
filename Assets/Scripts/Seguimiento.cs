@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Seguimiento : MonoBehaviour
 {
@@ -35,4 +36,16 @@ public class Seguimiento : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) // Verifica si es el jugador
+        {
+            // Cambiar la escena
+            SceneManager.LoadScene("TBC"); // Cargar la escena "TCB"
+
+            // Destruir el objeto actual
+            Destroy(gameObject);
+        }
+    }
 }
+
