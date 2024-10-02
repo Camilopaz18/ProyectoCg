@@ -12,7 +12,7 @@ public abstract class Fighter : MonoBehaviour
 
     public List<StatusMod> statusMods;
 
-    protected Stats stats;
+    public Stats stats;
 
     protected Skill[] skills;
 
@@ -125,5 +125,6 @@ public abstract class Fighter : MonoBehaviour
 
     public abstract void InitTurn();
 
+ 
 
 }
