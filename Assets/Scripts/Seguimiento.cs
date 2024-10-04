@@ -11,6 +11,7 @@ public class Seguimiento : MonoBehaviour
     public Vector3 puntoInicial;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+ // Guardar el punto de colisión
 
     private void Start()
     {
@@ -40,6 +41,10 @@ public class Seguimiento : MonoBehaviour
     {
         if (collision.CompareTag("Player")) // Verifica si es el jugador
         {
+            // Guardar el punto de colisión
+            PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.SetFloat("ContactPointX", transform.position.x);
+            PlayerPrefs.SetFloat("ContactPointY", transform.position.y);
             // Cambiar la escena
             SceneManager.LoadScene("TBC"); // Cargar la escena "TCB"
 

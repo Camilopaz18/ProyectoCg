@@ -7,10 +7,10 @@ using UnityEngine;
  
             private static Dictionary<string, Stats> predefinedStats = new Dictionary<string, Stats>
         {
-            { "Heroe 1", new Stats(20, 100, 30, 20, 25, 15) },
-            { "Heroe 2", new Stats(25, 120, 35, 22, 30, 10) },
-            { "Heroe 3", new Stats(24, 90, 25, 18, 20, 20) },
-            { "Heroe 4", new Stats(23, 140, 40, 25, 35, 12) }
+            { "Heroe 1", new Stats(20, 100, 17,20, 25, 15) },
+            { "Heroe 2", new Stats(25, 120, 17,22, 30, 10) },
+            { "Heroe 3", new Stats(24, 90, 17,18, 20, 20) },
+            { "Heroe 4", new Stats(23, 140, 17,25, 35, 12) }
         };
 
             public static Stats GetStatsForHero(string heroName)

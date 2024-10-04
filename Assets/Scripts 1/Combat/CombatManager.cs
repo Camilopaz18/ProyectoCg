@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public enum CombatStatus
 {
@@ -27,6 +28,8 @@ public class CombatManager : MonoBehaviour
     private Skill currentFighterSkill;
 
     private List<Fighter> returnBuffer;
+
+    
 
     void Start()
     {
@@ -161,12 +164,19 @@ public class CombatManager : MonoBehaviour
                     {
                         LogPanel.Write("Victoria!");
                         this.isCombatActive = false;
+
+                        // Cambiar a la escena "" después de la victoria
+                        EndCombat(true);
                     }
 
                     if (defeat)
                     {
                         LogPanel.Write("Derrota!");
                         this.isCombatActive = false;
+                        // Cambiar a la escena "" después de la derrota
+
+                        EndCombat(false);
+
                     }
 
                     if (this.isCombatActive)
@@ -228,6 +238,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+
     public Fighter[] FilterJustAlive(Fighter[] team)
     {
         this.returnBuffer.Clear();
@@ -277,9 +288,36 @@ public class CombatManager : MonoBehaviour
         return this.FilterJustAlive(team);
     }
 
+
     public void OnFighterSkill(Skill skill)
     {
         this.currentFighterSkill = skill;
         this.combatStatus = CombatStatus.FIGHTER_ACTION;
     }
+
+    /// <summary>
+    /// /
+    /// </summary>
+    /// <param name="playerWon"></param>
+    private void EndCombat(bool playerWon)
+    {
+        if (playerWon)
+        {
+            // Obtener la escena y el punto de contacto donde ocurrió la colisión
+            string lastScene = PlayerPrefs.GetString("LastScene", "bosque"); // Predeterminado "bosque" si no encuentra nada
+            float contactPointX = PlayerPrefs.GetFloat("ContactPointX", 0f);
+            float contactPointY = PlayerPrefs.GetFloat("ContactPointY", 0f);
+
+            // Cargar la escena original
+            SceneManager.LoadScene(lastScene);
+
+            // Reposicionar al jugador en el punto de contacto
+            GameObject player = GameObject.FindWithTag("Player");
+            if (player != null)
+            {
+                player.transform.position = new Vector3(contactPointX, contactPointY, player.transform.position.z);
+            }
+        }
+    }
+
 }

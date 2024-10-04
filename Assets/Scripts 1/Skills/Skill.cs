@@ -47,6 +47,8 @@ public abstract class Skill : MonoBehaviour
         Destroy(go, this.animationDuration);
     }
 
+
+
     public void Run()
     {
         foreach(var receiver in this.receivers)
