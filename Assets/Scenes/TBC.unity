@@ -333,7 +333,7 @@ MonoBehaviour:
   skillName: Curse
   animationDuration: 2
   targeting: 4
-  effectPrfb: {fileID: 2530754296400339780, guid: b51663b5a1fcb374d9e987fac33a5b08, type: 3}
+  effectPrfb: {fileID: 2530754296400339780, guid: 657a1bcd8ae3e2b47938af47dfcdd5ff, type: 3}
 --- !u!1 &45154770
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +381,7 @@ MonoBehaviour:
   skillName: Punch
   animationDuration: 1
   targeting: 4
-  effectPrfb: {fileID: 2297502948686414365, guid: 153e218eab33ce44aa0ee5a30959daa2, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: 2de167241da13fc4cb5e438f2aad0068, type: 3}
   amount: -35
   modType: 0
   critChance: 0.102
@@ -432,7 +432,7 @@ MonoBehaviour:
   skillName: Punch
   animationDuration: 1
   targeting: 4
-  effectPrfb: {fileID: 2297502948686414365, guid: 153e218eab33ce44aa0ee5a30959daa2, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: 2de167241da13fc4cb5e438f2aad0068, type: 3}
   amount: -35
   modType: 0
   critChance: 0.102
@@ -483,7 +483,7 @@ MonoBehaviour:
   skillName: Dragon Fury
   animationDuration: 2
   targeting: 4
-  effectPrfb: {fileID: 2297502948686414365, guid: a0ac3c1cd12b0b146850da4cc37fb779, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: 5af9ff7296a18bd4f961762bf9335a4b, type: 3}
   amount: -40
   modType: 1
   critChance: 0
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   skillName: Beating
   animationDuration: 1.5
   targeting: 2
-  effectPrfb: {fileID: 2297502948686414365, guid: ff61d01611a5f8f47b4a73ee48ef8d79, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: c13840b10cc33bf47b4107f0e4c148ba, type: 3}
   amount: -40
   modType: 0
   critChance: 0
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   skillName: Quick Attack
   animationDuration: 1.5
   targeting: 4
-  effectPrfb: {fileID: 2297502948686414365, guid: ff61d01611a5f8f47b4a73ee48ef8d79, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: c13840b10cc33bf47b4107f0e4c148ba, type: 3}
   amount: -40
   modType: 0
   critChance: 0
@@ -2134,7 +2134,7 @@ MonoBehaviour:
   skillName: Heal
   animationDuration: 1
   targeting: 3
-  effectPrfb: {fileID: 2297502948686414365, guid: 39f9f70045b56d2449f8e848795989d0, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: 9ff6767b6325f564386417ec51e2a395, type: 3}
   amount: 0.2
   modType: 2
   critChance: 0
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   skillName: Punch
   animationDuration: 1
   targeting: 4
-  effectPrfb: {fileID: 2297502948686414365, guid: 153e218eab33ce44aa0ee5a30959daa2, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: 2de167241da13fc4cb5e438f2aad0068, type: 3}
   amount: -35
   modType: 0
   critChance: 0.102
@@ -3117,7 +3117,7 @@ MonoBehaviour:
   skillName: Punch
   animationDuration: 1
   targeting: 4
-  effectPrfb: {fileID: 2297502948686414365, guid: 153e218eab33ce44aa0ee5a30959daa2, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: 2de167241da13fc4cb5e438f2aad0068, type: 3}
   amount: -35
   modType: 0
   critChance: 0.102
@@ -3958,7 +3958,7 @@ MonoBehaviour:
   skillName: Paralize
   animationDuration: 2
   targeting: 4
-  effectPrfb: {fileID: 5548533807391102318, guid: bc837f362e5a1e849befffde07b0c985, type: 3}
+  effectPrfb: {fileID: 5548533807391102318, guid: 2ebc9c53094b34a4183225b401543a2c, type: 3}
 --- !u!1 &1196232134
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,7 +4260,7 @@ MonoBehaviour:
   skillName: Dragon Fury
   animationDuration: 2
   targeting: 4
-  effectPrfb: {fileID: 2297502948686414365, guid: a0ac3c1cd12b0b146850da4cc37fb779, type: 3}
+  effectPrfb: {fileID: 2297502948686414365, guid: 5af9ff7296a18bd4f961762bf9335a4b, type: 3}
   amount: -40
   modType: 1
   critChance: 0
