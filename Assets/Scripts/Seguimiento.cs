@@ -45,6 +45,10 @@ public class Seguimiento : MonoBehaviour
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
             PlayerPrefs.SetFloat("ContactPointX", transform.position.x);
             PlayerPrefs.SetFloat("ContactPointY", transform.position.y);
+
+            // Guardar el sprite del enemigo
+            PlayerPrefs.SetString("EnemySprite", spriteRenderer.sprite.name);
+
             // Cambiar la escena
             SceneManager.LoadScene("TBC"); // Cargar la escena "TCB"
 

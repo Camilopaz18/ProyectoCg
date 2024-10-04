@@ -47,6 +47,11 @@ public class CombatManager : MonoBehaviour
         this.fighterIndex = -1;
         this.isCombatActive = true;
         StartCoroutine(this.CombatLoop());
+
+
+        //Cambios de sprite 
+
+        LoadEnemySprite();
     }
 
     private void SortFightersBySpeed()
@@ -298,7 +303,7 @@ public class CombatManager : MonoBehaviour
     /// <summary>
     /// /
     /// </summary>
-    /// <param name="playerWon"></param>
+    /// <param name="playerWon"></param>  //cosas que agrego para funciones de codigo 
     private void EndCombat(bool playerWon)
     {
         if (playerWon)
@@ -319,5 +324,59 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
+
+    private void LoadEnemySprite()
+    {
+        // Obtener el nombre del sprite del enemigo desde PlayerPrefs
+        string enemySpriteName = PlayerPrefs.GetString("EnemySprite", "");
+
+        // Si hay un sprite guardado, asignarlo a un GameObject
+        if (!string.IsNullOrEmpty(enemySpriteName))
+        {
+            GameObject enemyGFX = GameObject.Find("Enemy 1/GFX"); // Cambia el nombre según tu jerarquía
+            GameObject enemyGFX2 = GameObject.Find("Enemy2/GFX"); // Cambia el nombre según tu jerarquía
+
+
+            if (enemyGFX != null)
+            {
+                SpriteRenderer enemySpriteRenderer = enemyGFX.GetComponent<SpriteRenderer>();
+
+                // Buscar el sprite por su nombre en los recursos
+                Sprite loadedSprite = Resources.Load<Sprite>("Sprites/" + enemySpriteName); // Cambia la ruta según la ubicación de tus sprites
+
+                if (loadedSprite != null)
+                {
+                    enemySpriteRenderer.sprite = loadedSprite; // Asignar el sprite cargado
+                }
+                else
+                {
+                    Debug.LogError("Sprite no encontrado: " + enemySpriteName);
+                }
+            }
+            else
+            {
+                Debug.LogError("No se encontró el GameObject 'Enemy1/GFX'.");
+            }
+            if (enemyGFX2 != null)
+            {
+                SpriteRenderer enemySpriteRenderer2 = enemyGFX2.GetComponent<SpriteRenderer>();
+                Sprite loadedSprite2 = Resources.Load<Sprite>("Sprites/" + enemySpriteName); // Cambia la ruta según la ubicación de tus sprites
+
+                if (loadedSprite2 != null)
+                {
+                    enemySpriteRenderer2.sprite = loadedSprite2; // Asignar el sprite cargado
+                }
+                else
+                {
+                    Debug.LogError("Sprite no encontrado: " + enemySpriteName);
+                }
+            }
+            else
+            {
+                Debug.LogError("No se encontró el GameObject 'Enemy 2/GFX'.");
+            }
+        }
+    }
+
 
 }
