@@ -29,10 +29,15 @@ public class CombatManager : MonoBehaviour
 
     private List<Fighter> returnBuffer;
 
-    
+    public Fighter[] heroes; // Asigna estos en el inspector
+    public Fighter[] enemies; // Asigna estos en el inspector
+
+
 
     void Start()
     {
+        InitializeCombat();
+
         this.returnBuffer = new List<Fighter>();
 
         this.fighters = GameObject.FindObjectsOfType<Fighter>();
@@ -52,6 +57,22 @@ public class CombatManager : MonoBehaviour
         //Cambios de sprite 
 
         LoadEnemySprite();
+    }
+    private void InitializeCombat()
+    {
+        // Reiniciar estadísticas de héroes
+        foreach (var hero in heroes)
+        {
+            hero.stats = HeroeStats.GetStatsForHero(hero.idName).Clone(); // O inicializa de nuevo
+            hero.statusPanel.SetStats(hero.idName, hero.stats);
+        }
+
+        // Reiniciar estadísticas de enemigos
+        foreach (var enemy in enemies)
+        {
+            enemy.stats = EnemyStats.GetStatsForEnemy(enemy.idName).Clone(); // O inicializa de nuevo
+            enemy.statusPanel.SetStats(enemy.idName, enemy.stats);
+        }
     }
 
     private void SortFightersBySpeed()

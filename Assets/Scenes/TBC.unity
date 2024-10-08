@@ -2537,6 +2537,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ceaff26f6ba284dadb1c108b81f897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroes:
+  - {fileID: 1592583302}
+  - {fileID: 874144385}
+  - {fileID: 1706659743}
+  - {fileID: 113658710}
+  enemies:
+  - {fileID: 378704347}
+  - {fileID: 771048149}
 --- !u!4 &794994003
 Transform:
   m_ObjectHideFlags: 0

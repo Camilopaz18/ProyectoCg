@@ -53,7 +53,7 @@ public class Seguimiento : MonoBehaviour
             SceneManager.LoadScene("TBC"); // Cargar la escena "TCB"
 
             // Destruir el objeto actual
-            Destroy(gameObject);
+           
         }
     }
 }
