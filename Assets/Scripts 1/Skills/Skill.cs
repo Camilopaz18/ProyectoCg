@@ -90,6 +90,15 @@ public abstract class Skill : MonoBehaviour
                     // Aquí se considera un ataque exitoso, realiza el daño
                     logMessages.AppendLine($"{emitter.idName} ha tenido éxito en su ataque con un número de {totalAttackValue}.");
                     this.Animate(receiver);
+
+                    // Aquí es donde calculamos el daño basado en los dados
+                    int totalDamage = CalculateDamageBasedOnDice(logMessages);
+
+                    // Aplicar el daño al enemigo
+                    receiver.ModifyHealth(-totalDamage);
+
+                    // Mensaje que muestra el daño infligido
+                    logMessages.AppendLine($"Daño infligido: {totalDamage}");
                     this.OnRun(receiver); // Solo se ejecuta si hay éxito
                 }
                 else
@@ -128,5 +137,37 @@ public abstract class Skill : MonoBehaviour
     }
 
     protected abstract void OnRun(Fighter receiver);
-    
+
+    private int CalculateDamageBasedOnDice(StringBuilder logMessages)
+    {
+        // Aquí puedes definir las combinaciones de dados para el ataque
+        List<string> diceCombinations = new List<string> { "1D10", "1D4" }; // Ejemplo para Héroe 1, Ataque 1: 1D10 + 1D4
+
+        int totalDamage = 0;
+        List<int> results = new List<int>(); // Lista para almacenar resultados de cada tirada
+
+        // Recorrer cada combinación de dados y hacer las tiradas
+        foreach (var dice in diceCombinations)
+        {
+            int diceResult = RollDiceFromString(dice);
+            results.Add(diceResult); // Almacenar el resultado
+            totalDamage += diceResult; // Sumar el resultado de cada tirada al total
+        }
+
+        // Construir el mensaje de daño infligido
+        string damageMessage = string.Join(" + ", results);
+        logMessages.AppendLine($"Daño infligido: {damageMessage} = {totalDamage}");
+
+        return totalDamage;
+    }
+    private int RollDiceFromString(string dice)
+    {
+        string[] parts = dice.Split('D'); // Separar el número de dados y las caras
+        int numberOfDice = int.Parse(parts[0]); // Ej: "1D10" -> número de dados = 1
+        int sides = int.Parse(parts[1]); // Ej: "1D10" -> caras = 10
+
+        return DiceRoller.RollDice(numberOfDice, sides); // Usar DiceRoller para calcular el resultado
+    }
+
+
 }

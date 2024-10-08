@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum HealthModType
@@ -8,7 +9,7 @@ public enum HealthModType
 public class HealthModSkill : Skill
 {
     [Header("Health Mod")]
-    public float amount;
+    public List<string> diceCombinations; // Ej: "1D10", "1D4", "2D6"
 
     public HealthModType modType;
 
@@ -17,39 +18,45 @@ public class HealthModSkill : Skill
 
     protected override void OnRun(Fighter receiver)
     {
-        float amount = this.GetModification(receiver);
+        // Calcular el daño basado en las tiradas de dados
+        int totalDamage = 0;
+        foreach (var Combi in diceCombinations)
+        {
+            totalDamage += RollDiceFromString(Combi); // Realizar tirada por cada combinación de dados
+        }
 
+        // Probabilidad de golpe crítico
         float dice = Random.Range(0f, 1f);
-
         if (dice <= this.critChance)
         {
-            amount *= 2f;
-            this.messages.Enqueue("Critical hit!");
+            totalDamage *= 2; // Duplicar daño por crítico
+            this.messages.Enqueue("¡Golpe crítico!");
         }
 
-        receiver.ModifyHealth(amount);
+        // Aplicar el daño al enemigo
+        receiver.ModifyHealth(-totalDamage);
     }
 
-    public float GetModification(Fighter receiver)
+    // Método para convertir la cadena de dados "1D10", "2D6", etc., en una tirada real
+    private int RollDiceFromString(string dice)
     {
-        switch (this.modType)
-        {
-            case HealthModType.STAT_BASED:
-                Stats emitterStats = this.emitter.GetCurrentStats();
-                Stats receiverStats = receiver.GetCurrentStats();
+        string[] parts = dice.Split('D'); // Separar el número de dados y las caras
+        int numberOfDice = int.Parse(parts[0]); // Ej: "1D10" -> número de dados = 1
+        int sides = int.Parse(parts[1]); // Ej: "1D10" -> caras = 10
 
-                // Fórmula: https://bulbapedia.bulbagarden.net/wiki/Damage
-                float rawDamage = (((2 * emitterStats.level) / 5) + 2) * this.amount * (emitterStats.attack / receiverStats.deffense);
-
-                return (rawDamage / 50) + 2;
-            case HealthModType.FIXED:
-                return this.amount;
-            case HealthModType.PERCENTAGE:
-                Stats rStats = receiver.GetCurrentStats();
-
-                return rStats.maxHealth * this.amount;
-        }
-
-        throw new System.InvalidOperationException("HealthModSkill::GetDamage. Unreachable!");
+        return DiceRoller.RollDice(numberOfDice, sides); // Usar DiceRoller para calcular el resultado
     }
 }
+    public class DiceRoller
+    {
+        // Realiza una tirada de varios dados del tipo especificado
+        public static int RollDice(int numberOfDice, int sides)
+        {
+            int total = 0;
+            for (int i = 0; i < numberOfDice; i++)
+            {
+                total += Random.Range(1, sides + 1); // Tirada de 1 a "sides"
+            }
+            return total;
+        }
+    }
