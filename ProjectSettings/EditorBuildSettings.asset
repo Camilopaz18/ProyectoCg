@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: 33df4233f65d51d4689e2a98ac1c79a0
   - enabled: 1
     path: Assets/Scenes/Bosque.unity
-    guid: 9ed277a27d9aed940a72184de32fbb2e
+    guid: 17ca608edae079541ad710b8a4835996
   - enabled: 1
     path: Assets/Scenes/Jefe.unity
     guid: 62bd13ba210fecb4698eff157f54d171

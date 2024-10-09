@@ -357,39 +357,73 @@ public class CombatManager : MonoBehaviour
             GameObject enemyGFX = GameObject.Find("Enemy 1/GFX"); // Cambia el nombre según tu jerarquía
             GameObject enemyGFX2 = GameObject.Find("Enemy2/GFX"); // Cambia el nombre según tu jerarquía
 
+            // Cargar el prefab correspondiente
+            GameObject enemyPrefab = Resources.Load<GameObject>("Sprites/" + enemySpriteName); // Cambia la ruta según la ubicación de tus prefabs
 
             if (enemyGFX != null)
             {
                 SpriteRenderer enemySpriteRenderer = enemyGFX.GetComponent<SpriteRenderer>();
 
-                // Buscar el sprite por su nombre en los recursos
-                Sprite loadedSprite = Resources.Load<Sprite>("Sprites/" + enemySpriteName); // Cambia la ruta según la ubicación de tus sprites
-
-                if (loadedSprite != null)
+                // Verificar si se ha cargado un prefab y asignar su sprite
+                if (enemyPrefab != null)
                 {
-                    enemySpriteRenderer.sprite = loadedSprite; // Asignar el sprite cargado
+                    SpriteRenderer prefabSpriteRenderer = enemyPrefab.GetComponentInChildren<SpriteRenderer>();
+                    if (prefabSpriteRenderer != null)
+                    {
+                        enemySpriteRenderer.sprite = prefabSpriteRenderer.sprite; // Asignar el sprite del prefab
+                    }
+                    else
+                    {
+                        Debug.LogError("No se encontró un SpriteRenderer en el prefab: " + enemySpriteName);
+                    }
                 }
                 else
                 {
-                    Debug.LogError("Sprite no encontrado: " + enemySpriteName);
+                    // Buscar el sprite por su nombre en los recursos
+                    Sprite loadedSprite = Resources.Load<Sprite>("Sprites/" + enemySpriteName); // Cambia la ruta según la ubicación de tus sprites
+
+                    if (loadedSprite != null)
+                    {
+                        enemySpriteRenderer.sprite = loadedSprite; // Asignar el sprite cargado
+                    }
+                    else
+                    {
+                        Debug.LogError("Sprite no encontrado: " + enemySpriteName);
+                    }
                 }
             }
             else
             {
-                Debug.LogError("No se encontró el GameObject 'Enemy1/GFX'.");
+                Debug.LogError("No se encontró el GameObject 'Enemy 1/GFX'.");
             }
+
             if (enemyGFX2 != null)
             {
                 SpriteRenderer enemySpriteRenderer2 = enemyGFX2.GetComponent<SpriteRenderer>();
-                Sprite loadedSprite2 = Resources.Load<Sprite>("Sprites/" + enemySpriteName); // Cambia la ruta según la ubicación de tus sprites
-
-                if (loadedSprite2 != null)
+                if (enemyPrefab != null)
                 {
-                    enemySpriteRenderer2.sprite = loadedSprite2; // Asignar el sprite cargado
+                    SpriteRenderer prefabSpriteRenderer = enemyPrefab.GetComponentInChildren<SpriteRenderer>();
+                    if (prefabSpriteRenderer != null)
+                    {
+                        enemySpriteRenderer2.sprite = prefabSpriteRenderer.sprite; // Asignar el sprite del prefab
+                    }
+                    else
+                    {
+                        Debug.LogError("No se encontró un SpriteRenderer en el prefab: " + enemySpriteName);
+                    }
                 }
                 else
                 {
-                    Debug.LogError("Sprite no encontrado: " + enemySpriteName);
+                    Sprite loadedSprite2 = Resources.Load<Sprite>("Sprites/" + enemySpriteName); // Cambia la ruta según la ubicación de tus sprites
+
+                    if (loadedSprite2 != null)
+                    {
+                        enemySpriteRenderer2.sprite = loadedSprite2; // Asignar el sprite cargado
+                    }
+                    else
+                    {
+                        Debug.LogError("Sprite no encontrado: " + enemySpriteName);
+                    }
                 }
             }
             else
@@ -398,6 +432,5 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
-
 
 }

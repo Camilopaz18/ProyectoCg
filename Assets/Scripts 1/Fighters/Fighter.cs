@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class Fighter : MonoBehaviour
+public abstract class Fighter    : MonoBehaviour
 {
     public Team team;
 

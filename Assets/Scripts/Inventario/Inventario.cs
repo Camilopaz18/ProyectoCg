@@ -14,17 +14,23 @@ public class Inventario : MonoBehaviour
     {
         if (coll.CompareTag("Cofre"))
         {
-            for (int i = 0; i < Bag.Count; i++)
+            try
             {
-                if (Bag[i].GetComponent<Image>().enabled== false)
+                for (int i = 0; i < Bag.Count; i++)
                 {
-                    Bag[i].GetComponent<Image>().enabled = true;
-                    Bag[i].GetComponent<Image>().sprite = coll.GetComponent<SpriteRenderer>().sprite;
-                    break;
+                    if (Bag[i].GetComponent<Image>().enabled == false)
+                    {
+                        Bag[i].GetComponent<Image>().enabled = true;
+                        Bag[i].GetComponent<Image>().sprite = coll.GetComponent<SpriteRenderer>().sprite;
+                        break;
+                    }
                 }
             }
+            catch (MissingReferenceException e)
+            {
+                Debug.LogWarning("Referencia a objeto destruido: " + e.Message);
+            }
         }
-        
     }
 
 
@@ -37,6 +43,9 @@ public class Inventario : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Limpia la lista de objetos destruidos
+        Bag.RemoveAll(item => item == null);
+
         if (Activar_inv)
         {
             inv.SetActive(true);
@@ -45,10 +54,10 @@ public class Inventario : MonoBehaviour
         {
             inv.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Return)) 
+
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-        
-        Activar_inv = !Activar_inv;
+            Activar_inv = !Activar_inv;
         }
     }
 }

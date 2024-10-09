@@ -10,6 +10,8 @@ public class SceneTransitionManager : MonoBehaviour
     private Vector3 playerPosition;
     private string lastScene;
     private string enemyToRemove;
+    private GameObject inventoryCanvas; // Para almacenar el canvas de inventario
+    private GameObject inventoryPrefab; // Para almacenar el prefab de inventario
 
     private void Awake()
     {
@@ -22,6 +24,13 @@ public class SceneTransitionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void SetInventory(GameObject Inve, GameObject Inventario)
+    {
+        inventoryCanvas = Inve;
+        inventoryPrefab = Inventario;
+        DontDestroyOnLoad(inventoryCanvas);  // Evita que el canvas se destruya al cargar la escena
+        DontDestroyOnLoad(inventoryPrefab);  // Evita que el prefab se destruya al cargar la escena
     }
 
     public void TransportToBattle(Vector3 position, string currentScene, string enemyName)
@@ -50,13 +59,30 @@ public class SceneTransitionManager : MonoBehaviour
             if (enemy != null)
             {
                 Destroy(enemy);
-
-                
             }
 
+            // Reposiciona a los héroes con separación
             RepositionHeroes();
         }
+        else if (scene.name == "TBC")
+        {
+            RestoreInventory();
+        }
     }
+    private void RestoreInventory()
+    {
+        if (inventoryCanvas != null)
+        {
+            inventoryCanvas.SetActive(true);  // Restaurar el canvas de inventario si es necesario
+        }
+
+        if (inventoryPrefab != null)
+        {
+            Instantiate(inventoryPrefab);  // Restaurar el inventario si es necesario
+        }
+    }
+
+
     private void RepositionHeroes()
     {
         float separation = 1.5f; // Ajusta este valor para cambiar la distancia entre los héroes
