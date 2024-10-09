@@ -21,12 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Jefe.unity
     guid: 62bd13ba210fecb4698eff157f54d171
   - enabled: 1
-    path: Assets/Scenes/Final.unity
-    guid: 20e8f05f2ac8e4647bb7d518dedf7bcc
-  - enabled: 1
     path: Assets/Scenes/TBC.unity
     guid: 8fd33d7ddceb9574092fcc427dc7678c
   - enabled: 1
     path: Assets/Scenes/TBC 1.unity
     guid: 45132ccc0917a01429df672f51c4068c
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: e8f613b23fc60c94197c88d35f2efa88
   m_configObjects: {}

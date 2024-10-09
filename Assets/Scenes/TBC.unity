@@ -264,7 +264,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &40588539
 Transform:
   m_ObjectHideFlags: 0
@@ -986,6 +986,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170698604}
     m_Modifications:
+    - target: {fileID: 7381918602585389202, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918602693012342, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.92
@@ -1002,6 +1006,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7381918602693012343, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918603428982121, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_Name
       value: StatsPanel_3_Player
@@ -1257,12 +1265,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373460140}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1114277890}
+  m_Father: {fileID: 581356107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &373460142
 MonoBehaviour:
@@ -1278,9 +1286,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Beating
   animationDuration: 1.5
-  targeting: 2
+  targeting: 4
   effectPrfb: {fileID: 2297502948686414365, guid: 153e218eab33ce44aa0ee5a30959daa2, type: 3}
-  diceCombinations: []
+  diceCombinations:
+  - 1D4
   modType: 0
   critChance: 0
 --- !u!1 &378704345
@@ -1383,7 +1392,8 @@ MonoBehaviour:
   animationDuration: 1.5
   targeting: 4
   effectPrfb: {fileID: 2297502948686414365, guid: ff61d01611a5f8f47b4a73ee48ef8d79, type: 3}
-  diceCombinations: []
+  diceCombinations:
+  - 1D6
   modType: 0
   critChance: 0
 --- !u!224 &390625078 stripped
@@ -1601,10 +1611,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170698604}
     m_Modifications:
+    - target: {fileID: 7381918602585389202, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918602693012342, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 108.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7381918602693012343, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918603428982121, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_Name
       value: StatsPanel_2_Enemy
@@ -1793,6 +1811,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -1874,6 +1893,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: af65cb20dbb2c384b8045cabc219cfbc, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.075
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &581356106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,6 +2021,7 @@ Transform:
   - {fileID: 497989401}
   - {fileID: 40588539}
   - {fileID: 1145170041}
+  - {fileID: 373460141}
   m_Father: {fileID: 378704346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &581566232
@@ -1916,10 +2032,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170698604}
     m_Modifications:
+    - target: {fileID: 7381918602585389202, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918602693012342, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 111.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7381918602693012343, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918603428982121, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_Name
       value: StatsPanel_2_Player
@@ -2208,9 +2332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b99e3b27e627ad469f6d07c32343e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Heal
+  skillName: Kame
   animationDuration: 1
-  targeting: 3
+  targeting: 2
   effectPrfb: {fileID: 2297502948686414365, guid: 39f9f70045b56d2449f8e848795989d0, type: 3}
   diceCombinations:
   - '1D10 '
@@ -2276,10 +2400,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170698604}
     m_Modifications:
+    - target: {fileID: 7381918602129963933, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    - target: {fileID: 7381918602585389202, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918602693012342, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 113
       objectReference: {fileID: 0}
+    - target: {fileID: 7381918602693012343, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918603428982121, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_Name
       value: StatsPanel_4_Player
@@ -2494,14 +2630,14 @@ RectTransform:
   m_GameObject: {fileID: 761329321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.02, y: 1.18, z: 1.02}
+  m_LocalScale: {x: 1.1, y: 1.18, z: 1.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 891097064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 38.649998, y: -5.8500013}
+  m_AnchoredPosition: {x: 63, y: -6}
   m_SizeDelta: {x: -79.30001, y: -27.699999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761329323
@@ -2525,7 +2661,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -3056,7 +3192,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -3105,15 +3241,15 @@ RectTransform:
   m_GameObject: {fileID: 891097063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.11, y: 1.5136364, z: 1.0090909}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 761329322}
   m_Father: {fileID: 170698604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 71.72}
+  m_AnchoredPosition: {x: 9, y: 44}
   m_SizeDelta: {x: -16, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &891097065
@@ -3961,7 +4097,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 382775904}
-  - {fileID: 373460141}
   m_Father: {fileID: 771048150}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128781290
@@ -4022,7 +4157,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -4059,7 +4194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1145170041
 Transform:
   m_ObjectHideFlags: 0
@@ -4645,10 +4780,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170698604}
     m_Modifications:
+    - target: {fileID: 7381918602585389202, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918602693012342, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 109.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7381918602693012343, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918603428982121, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_Name
       value: StatsPanel_1_Enemy
@@ -4965,7 +5108,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -5521,7 +5664,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -5614,10 +5757,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170698604}
     m_Modifications:
+    - target: {fileID: 7381918602585389202, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918602693012342, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 109.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7381918602693012343, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4f2e2051b4935974babb4dc1d555bd72, type: 3}
     - target: {fileID: 7381918603428982121, guid: ffa40bcafefbff44d8bc0ab8a5e793b6, type: 3}
       propertyPath: m_Name
       value: StatsPanel_1_Player

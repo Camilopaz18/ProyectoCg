@@ -6,10 +6,10 @@ public class EnemyStats : MonoBehaviour
 {
     private static Dictionary<string, Stats> predefinedEnemyStats = new Dictionary<string, Stats>
     {
-        { "Enemy 1", new Stats(3, 1, 20f, 15f, 10f, 12f) },
-        { "Enemy 2", new Stats(4, 1,5f, 18f, 15f, 8f) },
-        { "Lupus", new Stats(2, 52, 20, 10f, 12f, 14f) },
-        { "Helena", new Stats(5, 35, 18, 22f, 20f, 10f) }
+        { "Enemy 1", new Stats(3, 13, 18, 15f, 10f, 12f,10) },
+        { "Enemy 2", new Stats(4, 21,15, 18f, 15f, 8f,10) },
+        { "Lupus", new Stats(2, 52, 20, 10f, 12f, 14f,30) },
+        { "Helena", new Stats(5, 35, 18, 22f, 20f, 10f,50) }
     };
 
     public static Stats GetStatsForEnemy(string enemyName)

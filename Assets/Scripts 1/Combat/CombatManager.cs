@@ -45,7 +45,7 @@ public class CombatManager : MonoBehaviour
         this.SortFightersBySpeed();
         this.MakeTeams();
 
-        LogPanel.Write("Battle initiated.");
+        LogPanel.Write("Batalla Iniciado.");
 
         this.combatStatus = CombatStatus.NEXT_TURN;
 
@@ -61,11 +61,11 @@ public class CombatManager : MonoBehaviour
     private void InitializeCombat()
     {
         // Reiniciar estadísticas de héroes
-        foreach (var hero in heroes)
-        {
-            hero.stats = HeroeStats.GetStatsForHero(hero.idName).Clone(); // O inicializa de nuevo
-            hero.statusPanel.SetStats(hero.idName, hero.stats);
-        }
+       // foreach (var hero in heroes)
+       // {
+         //   hero.stats = HeroeStats.GetStatsForHero(hero.idName).Clone(); // O inicializa de nuevo
+         //   hero.statusPanel.SetStats(hero.idName, hero.stats);
+      //  }
 
         // Reiniciar estadísticas de enemigos
         foreach (var enemy in enemies)

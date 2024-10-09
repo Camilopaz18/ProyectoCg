@@ -18,6 +18,8 @@ public abstract class Fighter    : MonoBehaviour
 
     public StatusCondition statusCondition;
 
+    private bool hasDied = false; // Indicador de si ya ha muerto
+
     public bool isAlive
     {
         get => this.stats.health > 0;
@@ -94,11 +96,18 @@ public abstract class Fighter    : MonoBehaviour
         this.stats.health = Mathf.Round(this.stats.health);
         this.statusPanel.SetHealth(this.stats.health, this.stats.maxHealth);
 
-        if (this.isAlive == false)
+        if (this.isAlive ==false && !hasDied)
         {
             Invoke("Die", 0.75f);
         }
+        if (this.team == Team.ENEMIES)
+        {
+            Debug.Log("entró");
+            LogPanel.Write("has ganado: " + this.stats.monedas);
+            MonedasManager.monedas(this.stats.monedas);
+        }
     }
+
 
     public Stats GetCurrentStats()
     {
