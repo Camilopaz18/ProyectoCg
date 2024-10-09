@@ -230,6 +230,31 @@ public class CombatManager : MonoBehaviour
                 case CombatStatus.CHECK_FIGHTER_STATUS_CONDITION:
                     var currentFighter = this.fighters[this.fighterIndex];
 
+                    // Comprobar si el nombre del luchador actual es "Lupus" y "Helena" sigue viva
+                    if (currentFighter.idName == "Lupus")
+                    {
+                        bool isHelenaAlive = false;
+
+                        // Verificar si Helena está viva
+                        foreach (var enemy in this.enemyTeam)
+                        {
+                            if (enemy.idName == "Helena" && enemy.isAlive)
+                            {
+                                isHelenaAlive = true;
+                                break;
+                            }
+                        }
+
+                        // Si Helena sigue viva, saltamos el turno de Lupus
+                        if (isHelenaAlive)
+                        {
+                            LogPanel.Write("Lupus no puede atacar mientras Helena esté viva.");
+                            this.combatStatus = CombatStatus.NEXT_TURN;
+                            yield return null;
+                            break;
+                        }
+                    }
+
                     var statusCondition = currentFighter.GetCurrentStatusCondition();
 
                     if (statusCondition != null)
