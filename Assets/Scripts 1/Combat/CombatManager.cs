@@ -213,7 +213,7 @@ public class CombatManager : MonoBehaviour
                     yield return null;
                     break;
                 case CombatStatus.NEXT_TURN:
-                    yield return new WaitForSeconds(3f);
+                    yield return new WaitForSeconds(1f);
 
                     Fighter current = null;
 
